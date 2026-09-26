@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react' ;
 import API from '../api'; // jo api.js file bnayi h use import kiya
+import { Link } from 'react-router-dom';
 
 export default function Patients() {
   const [patients, setPatients]= useState([]);
@@ -23,23 +24,18 @@ export default function Patients() {
   },[]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
-
-
-        {/* Header Section */}
-        <div className="bg-blue-600 p-6 text-white flex justify-between items-center">
-          <h1 className="text-2xl font-bold">
-          Hospital Management System
-          </h1>
-          <span className="bg-screen-500 text-xs px-3 py-1 rounded-full font-semibold">
-               Live Backend Connected
-          </span>
-        </div>
-
-         {/* Content Section */}
-         <div className="p-6">
-           <h2 className="text-xl font-semibold text-gray-800 mb-4">Patients List</h2>
+    <div className="p-6 max-w-5xl mx-auto">
+      {/* Header with Title and Add Button */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-gray-800">Patients Management</h2>
+        <Link 
+          to="/add-patient"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition shadow"
+        >
+          + Add New Patient 
+        </Link>   
+      </div>   
+   
             
 
             {loading && <p className="text-blue-600 animate-pulse">Loading data from Render backend..</p>}
@@ -86,7 +82,7 @@ export default function Patients() {
             )}
           </div> 
 
-      </div>
-    </div>
+      
+    
   );
 }             
